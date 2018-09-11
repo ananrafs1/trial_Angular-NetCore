@@ -44,6 +44,7 @@ namespace trialApps.API
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             // services.AddTransient<Seeder>();
             services.AddScoped<IAuthRepository, AuthRepository>();

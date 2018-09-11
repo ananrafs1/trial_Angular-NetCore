@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -38,5 +40,20 @@ namespace trialApps.API.Controllers
 
             return Ok(userToReturn);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDTO dto) 
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            var userFromRepo = await Repo.GetUser(id);
+            mapper.Map(dto, userFromRepo);
+
+            if (await Repo.SaveAll())
+                return NoContent();
+            
+            throw new Exception($"Update user {id} failed on save");
+        }
+
     }
 }
