@@ -20,6 +20,11 @@ namespace trialApps.API.Helpers
                 .IncludeBase<User, ListUsersDTO>();
             CreateMap<Photo, DetailsUserPhotoDTO>();
             CreateMap<UserForUpdateDTO, User>();
+
+            CreateMap<Photo, PhotoReturnDTO>()
+                .IncludeBase<Photo, DetailsUserPhotoDTO>();
+                
+            CreateMap<PhotoCreationDTO, Photo>();
         }
     }
 }

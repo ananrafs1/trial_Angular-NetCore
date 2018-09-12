@@ -26,6 +26,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { UnsavedGuard } from './_guards/unsaved.guard';
+import { MemberPhotoEditorComponent } from './members/member-photo-editor/member-photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -43,7 +45,8 @@ export function tokenGetter() {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      MemberPhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -59,7 +62,8 @@ export function tokenGetter() {
               whitelistedDomains: ['localhost:5000'],
               blacklistedRoutes: ['localhost:5000/api/auth']
           }
-      })
+      }),
+      FileUploadModule
    ],
    providers: [
       AuthService,

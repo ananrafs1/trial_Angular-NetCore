@@ -46,7 +46,9 @@ namespace trialApps.API.Controllers
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
+
             var userFromRepo = await Repo.GetUser(id);
+
             mapper.Map(dto, userFromRepo);
 
             if (await Repo.SaveAll())
