@@ -41,14 +41,13 @@ namespace trialApps.API.Controllers
                 return BadRequest("Username already exists");
             }
 
-            User userToCreate = new User()
-            {
-                Username = userDTO.Username
-            };
+            User userToCreate = mapper.Map<User>(userDTO);
 
             var createdUser = await repo.Register(userToCreate, userDTO.Password);
 
-            return StatusCode(201);
+            var userToReturn = mapper.Map<DetailUserDTO>(createdUser);
+
+            return CreatedAtRoute("GetUser",new {controller="Users", id=createdUser.Id}, userToReturn);
         }
 
         [HttpPost("login")]
