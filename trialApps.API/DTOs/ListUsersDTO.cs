@@ -4,7 +4,7 @@ using trialApps.API.Models;
 
 namespace trialApps.API.DTOs
 {
-    public class ListUsersDTO
+    public class ListUsersDTO : Metadata
     {
          public int Id { get; set; }
         public string Username { get; set; }

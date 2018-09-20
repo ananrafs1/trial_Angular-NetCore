@@ -28,6 +28,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { UnsavedGuard } from './_guards/unsaved.guard';
 import { MemberPhotoEditorComponent } from './members/member-photo-editor/member-photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -46,7 +47,8 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      MemberPhotoEditorComponent
+      MemberPhotoEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,

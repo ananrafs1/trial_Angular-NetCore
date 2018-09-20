@@ -6,10 +6,12 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using trialApps.API.DTOs;
+using trialApps.API.Helpers;
 using trialApps.API.Repo.Interface;
 
 namespace trialApps.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
